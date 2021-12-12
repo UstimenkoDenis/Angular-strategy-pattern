@@ -1,5 +1,5 @@
 import {Inject, Injectable} from "@angular/core";
-import {FlyBehavior} from "./behaviors/fly-behavior/fly-behavior";
+import {FlyBehavior} from "../behaviors/fly-behavior/fly-behavior";
 
 @Injectable()
 export class FlyService {

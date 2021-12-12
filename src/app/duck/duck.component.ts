@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FlyService} from "./fly.service";
+import {FlyService} from "./services/fly.service";
 import {DuckTypeImages} from "./types/duck.-types";
+import {QuackService} from "./services/quack-service";
 
 @Component({
   selector: 'app-duck',
@@ -9,17 +10,26 @@ import {DuckTypeImages} from "./types/duck.-types";
 })
 
 export class DuckComponent implements OnInit {
-  @Input() flyBehavior: string = '';
   @Input() duckType: string = '';
+  @Input() flyBehavior: string = '';
+  @Input() quackBehavior: string = '';
+
   public duckTypeImages = DuckTypeImages ;
 
-  constructor(private flyService: FlyService) { }
+  constructor(
+    private flyService: FlyService,
+    private quackService: QuackService
+  ) {}
 
   ngOnInit(): void {
     this.fly(this.flyBehavior);
+    this.quack(this.quackBehavior)
   }
 
   fly(flyBehavior: string) {
     this.flyService.fly(flyBehavior);
+  }
+  quack(quackBehavior: string) {
+    this.quackService.quack(quackBehavior);
   }
 }
